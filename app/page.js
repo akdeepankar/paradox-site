@@ -62,11 +62,20 @@ export default function Home() {
         },
         sports: {
           image: '/sports2022.jpg', // Image for sports category
-          description: 'Description for Sports Events in 2022'
+          description: 'At Paradox’23, we put the physical abilities of our students with a variety of competitive and recreational sports events. From events like Zumba, IPL Auction, chess competitions and e-sporting events to football, volleyball, roller skating and running races, both physical and strategic abilities were tested.The morning of day three witnessed the Instructors versus Organizers Cricket match, in which the organizers came out on top.'
         },
         culturals: {
           image: '/cultural2022.jpg', // Image for cultural category
-          description: 'Description for Cultural Events in 2022'
+          description: 'Paradox’23 hosted a variety of cultural events where students could show off and exhibit their talents. With the classic Paradox events including but limited to Attire Spectra, Dream2Dance and Paradox Unwind, students were treated to nights of fashion, dance and music.'
+        },
+        'industry interaction': {
+          description: 'In an engaging event titled "E-Conclave - Unveiling the Secrets of Startup Success," a panel of renowned experts gathered to share their insights on the factors that contribute to the triumph of startups. The event got kicked off with a keynote speech by Dr. Ashok Jhunjhunwala and the panelists included Prof. Jayraj Joseph, Dr. Shankar Raman, Moinak Banerjee, and Anant Mani, each bringing their unique perspectives from the realms of medtech innovations, incubator support, social entrepreneurship, and scaling challenges. Paradox 2023 also hosted an insightful panel discussion, moderated by Prof. Balaji Srinivasan and Mr. Jaidev Deshpande where industry experts and companies came together to explore the future of skills and cybersecurity. Representatives from renowned organizations such as Wipro, GAVS Technologies, LatentView Analytics, Cargill, Citi, Amadeus, Google, foundit, Microsoft, Encora Inc., and JPMorgan Chase & Co. shared their expertise. Students also had the opportunity to engage with the panelists, posing insightful questions on topics such as preparing students for the tech industry, relevant cybersecurity skills, the applicability of different ML models, and mitigating fraudulent practices associated with AI usage.'
+        },
+        'interactive session': {
+          description: 'Students, at Paradox’23, had the opportunity to interact with their favorite faculty members and legends of education. Fun interactive sessions with Prof. Andrew Thangaraj, Prof. Madhavan Mukund, Prof. G Venkatesh and other favorites brought the students closer to the program. It also gave the professors the opportunity to pass on their wisdom to the students. '
+        },
+        'certificate distribution':{
+          description: ' At Paradox’23, 23 students received awards for their exemplary academic performance in the program. The awards were categorized into three: Certificate of Merit, Certificate of Academic Distinction and Certificate of Academic Excellence. The event also marked the formal distribution of BSc degree certificates to 9 students and diploma certificates to 258 students. The students received their awards and certificates from Chief Guest, Mr. Venkat Viswanathan, Founder and Chairperson at LatentView Analytics and Prof. V Kamakoti, Director of IIT Madras.'
         }
       }
     },
@@ -95,6 +104,8 @@ export default function Home() {
     },
   };
 
+  //2024 - technical / sports /
+
   const images = {
     '2024': {
       technical: [
@@ -111,74 +122,90 @@ export default function Home() {
         'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       ],
       sports: [
-        '/2024/sport1.jpg',
-        '/2024/sport2.jpg',
-        '/2024/sport3.jpg',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       ],
       culturals: [
-        '/2024/cultural1.jpg',
-        '/2024/cultural2.jpg',
-        '/2024/cultural3.jpg',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       ],
       industry: [
-        '/2024/industry1.jpg',
-        '/2024/industry2.jpg',
-        '/2024/industry3.jpg',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       ],
       interactive: [
-        '/2024/interactive1.jpg',
-        '/2024/interactive2.jpg',
-        '/2024/interactive3.jpg',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       ],
       certificate: [
-        '/2024/certificate1.jpg',
-        '/2024/certificate2.jpg',
-        '/2024/certificate3.jpg',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       ],
     },
     '2023': {
       technical: [
-        '/2023/tech1.jpg',
-        '/2023/tech2.jpg',
-        '/2023/tech3.jpg',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       ],
       sports: [
-        '/2023/sport1.jpg',
-        '/2023/sport2.jpg',
-        '/2023/sport3.jpg',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       ],
       culturals: [
-        '/2023/cultural1.jpg',
-        '/2023/cultural2.jpg',
-        '/2023/cultural3.jpg',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       ],
+      'industry interaction': [
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      ],
+      'interactive session': [
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      ],
+      'certificate distribution':[
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      ]
     },
     '2022': {
       technical: [
-        '/2022/tech1.jpg',
-        '/2022/tech2.jpg',
-        '/2022/tech3.jpg',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       ],
       sports: [
-        '/2022/sport1.jpg',
-        '/2022/sport2.jpg',
-        '/2022/sport3.jpg',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       ],
       culturals: [
-        '/2022/cultural1.jpg',
-        '/2022/cultural2.jpg',
-        '/2022/cultural3.jpg',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       ],
     },
   };
-
+  
+  //Capitalize the Words
   const capitalizeWords = (str) => {
     return str.replace(/\b\w/g, (char) => char.toUpperCase());
   };
 
   const imageGalleryRef = useRef(null);
 
-  // Scroll to the beginning of the image gallery when the category changes
+  // Scroll to the beginning of the image gallery when the Category changes
   useEffect(() => {
     if (imageGalleryRef.current) {
       imageGalleryRef.current.scrollLeft = 0;
@@ -189,110 +216,110 @@ export default function Home() {
   return (
     <main className="bg-[#01081B] flex min-h-screen flex-col items-center relative">
       
-      <div className="absolute inset-0 z-0 pointer-events-none hidden md:block">
-  <img src="/blue-purple-1.svg" alt="Gradient" className="w-full h-full object-cover" />
-</div>
+        <div className="absolute inset-0 z-0 pointer-events-none hidden md:block">
+        <img src="/blue-purple-1.svg" alt="Gradient" className="w-full h-full object-cover" />
+        </div>
 
-      {/* Header Card */}
-      <div className="max-w-8xl w-full bg-white shadow-md overflow-hidden z-10 mb-8">
-        {/* Image */}
-        <div className="relative h-60">
-          <Image
-            src="/header.png"
-            alt="Header Image"
-            layout="fill"
-            objectFit="cover"
-            className="dark:invert"
-            priority
-          />
-          <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
-          <div className="absolute top-4 left-4 z-30">
+        {/* Header Card */}
+        <div className="max-w-8xl w-full bg-white shadow-md overflow-hidden z-10 mb-8">
+          {/* Image */}
+          <div className="relative h-60">
             <Image
-              src="/iitmlogo.png"
-              alt="Logo"
-              width={50}
-              height={50}
-              className="rounded-full"
+              src="/header.png"
+              alt="Header Image"
+              layout="fill"
+              objectFit="cover"
+              className="dark:invert"
+              priority
+            />
+            <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
+            <div className="absolute top-4 left-4 z-30">
+              <Image
+                src="/iitmlogo.png"
+                alt="Logo"
+                width={50}
+                height={50}
+                className="rounded-full"
+              />
+            </div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-20">
+              <h1 className="md:text-7xl text-4xl font-bold mb-2 text-white text-glow">PARADOX</h1>
+              <p className="md:text-xl text-md text-white">Curated and organized by the IIT Madras BS Degree Programme Students</p>
+            </div>
+          </div>
+        </div>
+  
+        {/* Year Tabs */}
+        <div className="w-full flex justify-center mb-8">
+          <div className="flex space-x-4 p-3 bg-gray-800 rounded-3xl shadow-lg">
+            {Object.keys(yearContent)
+              .sort((a, b) => b - a)
+              .map((year) => (
+                <button
+                  key={year}
+                  onClick={() => {
+                    setSelectedYear(year);
+                    setSelectedCat(Object.keys(yearContent[year].categories)[0]);
+                  }}
+                  className={`px-4 py-2 rounded-3xl ${
+                    selectedYear === year ? 'bg-[#01081B] text-white' : 'bg-[#525b70] text-black'
+                  }`}
+                >
+                  {year}
+                </button>
+              ))}
+          </div>
+        </div>
+    
+        {/* Description and Content */}
+        <div className="w-full flex flex-col items-center sm:flex-row sm:justify-center sm:space-x-4 pr-5 pl-5 pb-5">
+          <div className="flex flex-col space-y-4 sm:space-y-0 sm:space-x-4 sm:flex-row w-full justify-center">
+            {/* Logo Card */}
+            <div className="relative w-full sm:w-1/3 bg-[#ffffff14] shadow-md rounded-lg overflow-hidden sm:mb-0 flex items-center justify-center neon-border">
+              <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
+                Logo
+              </div>
+              <div className="flex items-center justify-center m-4">
+                <Image
+                  src={yearContent[selectedYear].logo}
+                  alt={`Logo for ${selectedYear}`}
+                  width={250}
+                  height={250}
+                />
+              </div>
+            </div>
+    
+        {/* Description Card */}
+        <div className="relative w-full sm:w-1/3 bg-[#ffffff14] shadow-md rounded-lg overflow-hidden mb-4 sm:mb-0 flex items-center justify-center">
+          <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
+            About
+          </div>
+          <div className="text-center m-4">
+            <Card>
+              <CardBody>
+                <p className='text-white font-bold'>{yearContent[selectedYear].tagline}</p>
+              </CardBody>
+            </Card>
+            <p className="mb-4 text-white text-md">{yearContent[selectedYear].description}</p>
+          </div>
+        </div>
+  
+        {/* Typography Card */}
+        <div className="relative w-full sm:w-1/3 bg-[#ffffff14] shadow-md rounded-lg overflow-hidden mb-4 sm:mb-0 flex items-center justify-center">
+          <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
+            Typography
+          </div>
+          <div className="flex items-center justify-center m-4">
+            <Image
+              src={yearContent[selectedYear].typography}
+              alt={`Typography for ${selectedYear}`}
+              width={525}
+              height={175}
             />
           </div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-20">
-            <h1 className="md:text-7xl text-4xl font-bold mb-2 text-white text-glow">PARADOX</h1>
-            <p className="md:text-xl text-md text-white">Curated and organized by the IIT Madras BS Degree Programme Students</p>
-          </div>
         </div>
       </div>
-  
-      {/* Year Tabs */}
-      <div className="w-full flex justify-center mb-8">
-        <div className="flex space-x-4 p-3 bg-gray-800 rounded-3xl shadow-lg">
-          {Object.keys(yearContent)
-            .sort((a, b) => b - a)
-            .map((year) => (
-              <button
-                key={year}
-                onClick={() => {
-                  setSelectedYear(year);
-                  setSelectedCat(Object.keys(yearContent[year].categories)[0]);
-                }}
-                className={`px-4 py-2 rounded-3xl ${
-                  selectedYear === year ? 'bg-[#01081B] text-white' : 'bg-[#525b70] text-black'
-                }`}
-              >
-                {year}
-              </button>
-            ))}
-        </div>
-      </div>
-  
-      {/* Description and Content */}
-      <div className="w-full flex flex-col items-center sm:flex-row sm:justify-center sm:space-x-4 pr-5 pl-5 pb-5">
-        <div className="flex flex-col space-y-4 sm:space-y-0 sm:space-x-4 sm:flex-row w-full justify-center">
-          {/* Logo Card */}
-          <div className="relative w-full sm:w-1/3 bg-[#ffffff14] shadow-md rounded-lg overflow-hidden sm:mb-0 flex items-center justify-center neon-border">
-            <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
-              Logo
-            </div>
-            <div className="flex items-center justify-center m-4">
-              <Image
-                src={yearContent[selectedYear].logo}
-                alt={`Logo for ${selectedYear}`}
-                width={250}
-                height={250}
-              />
-            </div>
-          </div>
-  
-          {/* Description Card */}
-          <div className="relative w-full sm:w-1/3 bg-[#ffffff14] shadow-md rounded-lg overflow-hidden mb-4 sm:mb-0 flex items-center justify-center">
-            <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
-              About
-            </div>
-            <div className="text-center m-4">
-              <Card>
-                <CardBody>
-                  <p className='text-white font-bold'>{yearContent[selectedYear].tagline}</p>
-                </CardBody>
-              </Card>
-              <p className="mb-4 text-white text-md">{yearContent[selectedYear].description}</p>
-            </div>
-          </div>
-  
-          {/* Typography Card */}
-          <div className="relative w-full sm:w-1/3 bg-[#ffffff14] shadow-md rounded-lg overflow-hidden mb-4 sm:mb-0 flex items-center justify-center">
-            <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
-              Typography
-            </div>
-            <div className="flex items-center justify-center m-4">
-              <Image
-                src={yearContent[selectedYear].typography}
-                alt={`Typography for ${selectedYear}`}
-                width={525}
-                height={175}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
   
       {/* Trailer and AfterMovie */}
       <div className="w-full flex flex-col items-center sm:flex-row sm:justify-center sm:space-x-4 pr-5 pl-5 pb-5">

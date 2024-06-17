@@ -44,3 +44,12 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it is above other content */
+  background-color: rgb(2, 4, 45); /* Match the background color of your tab */
+}
