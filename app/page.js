@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from "next/image";
 import {Card, CardBody} from "@nextui-org/card";
 
@@ -98,7 +98,7 @@ export default function Home() {
   const images = {
     '2024': {
       technical: [
-        'https://lh4.googleusercontent.com/Hkbh6FbGEttmM8KV9UbhR8HqfhXGB_GZv5aZjetiSsfwLRY5gR_plYQMoEodpLX8nTVzhGI0RjutYz5X6nY81vLHNFHq0vZDr7oDZ-VrYDNMS6O3zRRoa2Xg7MtBwj2uRA=w1280',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -175,6 +175,15 @@ export default function Home() {
   const capitalizeWords = (str) => {
     return str.replace(/\b\w/g, (char) => char.toUpperCase());
   };
+
+  const imageGalleryRef = useRef(null);
+
+  // Scroll to the beginning of the image gallery when the category changes
+  useEffect(() => {
+    if (imageGalleryRef.current) {
+      imageGalleryRef.current.scrollLeft = 0;
+    }
+  }, [selectedCat]);
   
 
   return (
@@ -207,7 +216,7 @@ export default function Home() {
             />
           </div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-20">
-            <h1 className="md:text-7xl text-4xl font-bold mb-2 text-white">PARADOX</h1>
+            <h1 className="md:text-7xl text-4xl font-bold mb-2 text-white text-glow">PARADOX</h1>
             <p className="md:text-xl text-md text-white">Curated and organized by the IIT Madras BS Degree Programme Students</p>
           </div>
         </div>
@@ -325,32 +334,34 @@ export default function Home() {
       </div>
   
 
+      {/* Category Tab */}
+      <div className="pl-5 pr-5 w-full overflow-x-auto flex md:justify-center">
+        <div className="flex space-x-4 mb-5 w-max p-3 bg-gray-800 rounded-3xl shadow-lg">
+          {Object.keys(yearContent[selectedYear].categories).map((category) => (
+            <button
+              key={category}
+              onClick={() => setSelectedCat(category)}
+              className={`px-4 py-2 rounded-3xl whitespace-nowrap ${
+                selectedCat === category ? 'bg-[#01081B] text-white' : 'bg-[#525b70] text-black'
+              }`}
+            >
+              {capitalizeWords(category)}
+            </button>
+          ))}
+        </div>
+      </div>
 
-<div className="pl-5 pr-5 w-full overflow-x-auto flex md:justify-center">
-  <div className="flex space-x-4 mb-5 w-max p-3 bg-gray-800 rounded-3xl shadow-lg">
-    {Object.keys(yearContent[selectedYear].categories).map((category) => (
-      <button
-        key={category}
-        onClick={() => setSelectedCat(category)}
-        className={`px-4 py-2 rounded-3xl whitespace-nowrap ${
-          selectedCat === category ? 'bg-[#01081B] text-white' : 'bg-[#525b70] text-black'
-        }`}
-      >
-        {capitalizeWords(category)}
-      </button>
-    ))}
-  </div>
-</div>
-  
       {/* Category Content */}
       <div className="bg-[#0E1426] shadow-md rounded-lg overflow-hidden ml-5 mr-5 mb-2 sm:mb-0 flex items-center justify-center">
         <div className="text-center m-4">
-              <p className='text-white'>{yearContent[selectedYear].categories[selectedCat].description}</p>
+          <p className="text-white">
+            {yearContent[selectedYear].categories[selectedCat].description}
+          </p>
         </div>
       </div>
-  
+
       {/* Image Gallery */}
-      <div className="w-full flex overflow-x-auto p-5">
+      <div ref={imageGalleryRef} className="w-full flex overflow-x-auto p-5">
         {(images[selectedYear] && images[selectedYear][selectedCat]) ? (
           images[selectedYear][selectedCat].map((img, index) => (
             <div
@@ -370,7 +381,7 @@ export default function Home() {
           <p className="text-white">No images available for this category.</p>
         )}
       </div>
-
+ 
   
       {/* Image Overlay */}
       {overlayImage && (
