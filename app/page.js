@@ -181,7 +181,7 @@ export default function Home() {
         {/* Image */}
         <div className="relative h-60">
           <Image
-            src="/header.jpg"
+            src="/header.png"
             alt="Header Image"
             layout="fill"
             objectFit="cover"
