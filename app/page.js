@@ -7,6 +7,8 @@ import {Card, CardBody} from "@nextui-org/card";
 export default function Home() {
   const [selectedYear, setSelectedYear] = useState('2024');
   const [selectedCat, setSelectedCat] = useState('technical');
+  const [overlayImage, setOverlayImage] = useState(null);
+
 
   const yearContent = {
     '2024': {
@@ -56,7 +58,7 @@ export default function Home() {
       categories: { // New object for category content
         technical: {
           image: '/technical2022.jpg', // Image for technical category
-          description: 'Description for Technical Events in 2022'
+          description: 'Paradox’23 brought a plethora of technical events aimed at tickling the curious minds of the students. With events related to but not limited to coding challenges, game development, machine learning and data analysis and visualization, the students were in for a feast for curious minds. '
         },
         sports: {
           image: '/sports2022.jpg', // Image for sports category
@@ -93,6 +95,83 @@ export default function Home() {
     },
   };
 
+  const images = {
+    '2024': {
+      technical: [
+        'https://lh4.googleusercontent.com/Hkbh6FbGEttmM8KV9UbhR8HqfhXGB_GZv5aZjetiSsfwLRY5gR_plYQMoEodpLX8nTVzhGI0RjutYz5X6nY81vLHNFHq0vZDr7oDZ-VrYDNMS6O3zRRoa2Xg7MtBwj2uRA=w1280',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      ],
+      sports: [
+        '/2024/sport1.jpg',
+        '/2024/sport2.jpg',
+        '/2024/sport3.jpg',
+      ],
+      culturals: [
+        '/2024/cultural1.jpg',
+        '/2024/cultural2.jpg',
+        '/2024/cultural3.jpg',
+      ],
+      industry: [
+        '/2024/industry1.jpg',
+        '/2024/industry2.jpg',
+        '/2024/industry3.jpg',
+      ],
+      interactive: [
+        '/2024/interactive1.jpg',
+        '/2024/interactive2.jpg',
+        '/2024/interactive3.jpg',
+      ],
+      certificate: [
+        '/2024/certificate1.jpg',
+        '/2024/certificate2.jpg',
+        '/2024/certificate3.jpg',
+      ],
+    },
+    '2023': {
+      technical: [
+        '/2023/tech1.jpg',
+        '/2023/tech2.jpg',
+        '/2023/tech3.jpg',
+      ],
+      sports: [
+        '/2023/sport1.jpg',
+        '/2023/sport2.jpg',
+        '/2023/sport3.jpg',
+      ],
+      culturals: [
+        '/2023/cultural1.jpg',
+        '/2023/cultural2.jpg',
+        '/2023/cultural3.jpg',
+      ],
+    },
+    '2022': {
+      technical: [
+        '/2022/tech1.jpg',
+        '/2022/tech2.jpg',
+        '/2022/tech3.jpg',
+      ],
+      sports: [
+        '/2022/sport1.jpg',
+        '/2022/sport2.jpg',
+        '/2022/sport3.jpg',
+      ],
+      culturals: [
+        '/2022/cultural1.jpg',
+        '/2022/cultural2.jpg',
+        '/2022/cultural3.jpg',
+      ],
+    },
+  };
+
   
 
   return (
@@ -120,158 +199,192 @@ export default function Home() {
             />
           </div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-20">
-            <h1 className="text-7xl font-bold mb-2 text-white">PARADOX</h1>
-            <p className="text-xl text-white">Curated and organized by the IIT Madras BS Degree Programme Students</p>
+            <h1 className="md:text-7xl text-4xl font-bold mb-2 text-white">PARADOX</h1>
+            <p className="md:text-xl text-md text-white">Curated and organized by the IIT Madras BS Degree Programme Students</p>
           </div>
         </div>
       </div>
   
-{/* Year Tabs */}
-<div className="w-full flex justify-center mb-8">
-  <div className="flex space-x-4 p-3 bg-gray-800 rounded-lg shadow-lg">
-    {Object.keys(yearContent)
-      .sort((a, b) => b - a) // Sorting years in descending order
-      .map((year) => (
-        <button
-          key={year}
-          onClick={() => {
-            setSelectedYear(year);
-            setSelectedCat(Object.keys(yearContent[year].categories)[0]); // Set the first category as selected
-          }}
-          className={`px-4 py-2 rounded-2xl ${
-            selectedYear === year ? 'bg-[#01081B] text-white' : 'bg-[#525b70] text-black'
-          }`}
-        >
-          {year}
-        </button>
-      ))}
-  </div>
-</div>
-
-
-{/* Logo, Description and Typography Cards */}
-<div className="w-full flex flex-col items-center sm:flex-row sm:justify-center sm:space-x-4 pr-5 pl-5 pb-5">
-  <div className="flex flex-col space-y-4 sm:space-y-0 sm:space-x-4 sm:flex-row w-full justify-center">
-    
-    {/* Logo Card */}
-<div className="relative w-full sm:w-1/3 bg-[#0E1426] shadow-md rounded-lg overflow-hidden sm:mb-0 flex items-center justify-center neon-border">
-  <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
-    Logo
-  </div>
-  <div className="flex items-center justify-center m-4">
-    <Image
-      src={yearContent[selectedYear].logo}
-      alt={`Logo for ${selectedYear}`}
-      width={250}
-      height={250}
-    />
-  </div>
-</div>
-
-
-
-    {/* Description Card */}
-    <div className="relative w-full sm:w-1/3 bg-[#0E1426] shadow-md rounded-lg overflow-hidden mb-4 sm:mb-0 flex items-center justify-center">
-      <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
-        Description
-      </div>
-      <div className="text-center m-4">
-        <Card>
-          <CardBody>
-            <p className='text-white font-bold'>{yearContent[selectedYear].tagline}</p>
-          </CardBody>
-        </Card>
-        <p className="mb-4 text-white text-md">{yearContent[selectedYear].description}</p>
-      </div>
-    </div>
-
-    {/* Typography Card */}
-    <div className="relative w-full sm:w-1/3 bg-[#0E1426] shadow-md rounded-lg overflow-hidden mb-4 sm:mb-0 flex items-center justify-center">
-      <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
-        Typography
-      </div>
-      <div className="flex items-center justify-center m-4">
-        <Image
-          src={yearContent[selectedYear].typography}
-          alt={`Typography for ${selectedYear}`}
-          width={525}
-          height={175}
-        />
-      </div>
-    </div>
-  </div>
-</div>
-
-
-{/* Trailer and AfterMovie */}
-
-<div className="w-full flex flex-col items-center sm:flex-row sm:justify-center sm:space-x-4 pr-5 pl-5 pb-5">
-  <div className="flex flex-col space-y-4 sm:space-y-0 sm:space-x-4 sm:flex-row w-full justify-center">
-     
-    {/* Trailer Card */}
-    <div className="relative w-full sm:w-1/2 bg-[#0E1426] shadow-md rounded-lg overflow-hidden sm:mb-0 flex items-center justify-center">
-      <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
-        Trailer
-      </div>
-      <div className="flex items-center justify-center m-4">
-        <iframe
-          className="w-full h-64"
-          src={yearContent[selectedYear].trailer}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title="Trailer"
-        ></iframe>
-      </div>
-    </div>
-
- {/* AfterMovie Card */}
- <div className="relative w-full sm:w-1/2 bg-[#0E1426] shadow-md rounded-lg overflow-hidden sm:mb-0 flex items-center justify-center">
-      <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
-        AfterMovie
-      </div>          <div className="flex items-center justify-center m-4">
-          <iframe
-            className="w-full h-64"
-            src={yearContent[selectedYear].trailer}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            title="Trailer"
-          ></iframe>
-          </div>
-        </div>
-      </div> 
-  </div>
-
-
-{/* Category Tabs */}
-        <div className="pl-5 pr-5 w-full overflow-x-auto flex md:justify-center">
-          <div className="flex space-x-4 mb-5 w-max p-3 bg-gray-800 rounded-lg shadow-lg">
-            {Object.keys(yearContent[selectedYear].categories).map((category) => (
+      {/* Year Tabs */}
+      <div className="w-full flex justify-center mb-8">
+        <div className="flex space-x-4 p-3 bg-gray-800 rounded-lg shadow-lg">
+          {Object.keys(yearContent)
+            .sort((a, b) => b - a)
+            .map((year) => (
               <button
-                key={category}
-                onClick={() => setSelectedCat(category)}
-                className={`px-4 py-2 rounded-2xl whitespace-nowrap ${
-                  selectedCat === category ? 'bg-[#01081B] text-white' : 'bg-[#525b70] text-black'
+                key={year}
+                onClick={() => {
+                  setSelectedYear(year);
+                  setSelectedCat(Object.keys(yearContent[year].categories)[0]);
+                }}
+                className={`px-4 py-2 rounded-2xl ${
+                  selectedYear === year ? 'bg-[#01081B] text-white' : 'bg-[#525b70] text-black'
                 }`}
               >
-                {category}
+                {year}
               </button>
             ))}
+        </div>
+      </div>
+  
+      {/* Description and Content */}
+      <div className="w-full flex flex-col items-center sm:flex-row sm:justify-center sm:space-x-4 pr-5 pl-5 pb-5">
+        <div className="flex flex-col space-y-4 sm:space-y-0 sm:space-x-4 sm:flex-row w-full justify-center">
+          {/* Logo Card */}
+          <div className="relative w-full sm:w-1/3 bg-[#0E1426] shadow-md rounded-lg overflow-hidden sm:mb-0 flex items-center justify-center neon-border">
+            <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
+              Logo
+            </div>
+            <div className="flex items-center justify-center m-4">
+              <Image
+                src={yearContent[selectedYear].logo}
+                alt={`Logo for ${selectedYear}`}
+                width={250}
+                height={250}
+              />
+            </div>
+          </div>
+  
+          {/* Description Card */}
+          <div className="relative w-full sm:w-1/3 bg-[#0E1426] shadow-md rounded-lg overflow-hidden mb-4 sm:mb-0 flex items-center justify-center">
+            <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
+              Description
+            </div>
+            <div className="text-center m-4">
+              <Card>
+                <CardBody>
+                  <p className='text-white font-bold'>{yearContent[selectedYear].tagline}</p>
+                </CardBody>
+              </Card>
+              <p className="mb-4 text-white text-md">{yearContent[selectedYear].description}</p>
+            </div>
+          </div>
+  
+          {/* Typography Card */}
+          <div className="relative w-full sm:w-1/3 bg-[#0E1426] shadow-md rounded-lg overflow-hidden mb-4 sm:mb-0 flex items-center justify-center">
+            <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
+              Typography
+            </div>
+            <div className="flex items-center justify-center m-4">
+              <Image
+                src={yearContent[selectedYear].typography}
+                alt={`Typography for ${selectedYear}`}
+                width={525}
+                height={175}
+              />
+            </div>
           </div>
         </div>
+      </div>
+  
+      {/* Trailer and AfterMovie */}
+      <div className="w-full flex flex-col items-center sm:flex-row sm:justify-center sm:space-x-4 pr-5 pl-5 pb-5">
+        <div className="flex flex-col space-y-4 sm:space-y-0 sm:space-x-4 sm:flex-row w-full justify-center">
+          {/* Trailer Card */}
+          <div className="relative w-full sm:w-1/2 bg-[#0E1426] shadow-md rounded-lg overflow-hidden sm:mb-0 flex items-center justify-center">
+            <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
+              Trailer
+            </div>
+            <div className="flex items-center justify-center m-4">
+              <iframe
+                className="w-full h-64"
+                src={yearContent[selectedYear].trailer}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="Trailer"
+              ></iframe>
+            </div>
+          </div>
+  
+          {/* AfterMovie Card */}
+          <div className="relative w-full sm:w-1/2 bg-[#0E1426] shadow-md rounded-lg overflow-hidden sm:mb-0 flex items-center justify-center">
+            <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
+              AfterMovie
+            </div>
+            <div className="flex items-center justify-center m-4">
+              <iframe
+                className="w-full h-64"
+                src={yearContent[selectedYear].aftermovie}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="AfterMovie"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      {/* Category Tabs */}
+      <div className="pl-5 pr-5 w-full overflow-x-auto flex md:justify-center">
+        <div className="flex space-x-4 mb-5 w-max p-3 bg-gray-800 rounded-lg shadow-lg">
+          {Object.keys(yearContent[selectedYear].categories).map((category) => (
+            <button
+              key={category}
+              onClick={() => setSelectedCat(category)}
+              className={`px-4 py-2 rounded-2xl whitespace-nowrap ${
+                selectedCat === category ? 'bg-[#01081B] text-white' : 'bg-[#525b70] text-black'
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+      </div>
+  
+      {/* Category Content */}
+      <div className="bg-[#0E1426] shadow-md rounded-lg overflow-hidden ml-5 mr-5 mb-2 sm:mb-0 flex items-center justify-center">
+        <div className="text-center m-4">
+              <p className='text-white'>{yearContent[selectedYear].categories[selectedCat].description}</p>
+        </div>
+      </div>
+  
+      {/* Image Gallery */}
+      <div className="w-full flex overflow-x-auto p-5">
+        {(images[selectedYear] && images[selectedYear][selectedCat]) ? (
+          images[selectedYear][selectedCat].map((img, index) => (
+            <div
+              key={index}
+              className="relative w-64 h-64 bg-gray-800 shadow-md rounded-lg overflow-hidden flex-shrink-0 mr-4 cursor-pointer"
+              onClick={() => setOverlayImage(img)}
+            >
+              <Image
+                src={img}
+                alt={`${selectedCat} event ${index + 1}`}
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          ))
+        ) : (
+          <p className="text-white">No images available for this category.</p>
+        )}
+      </div>
 
   
-        {/* Content Content */}
-        <div className="w-full sm:w-1/3 bg-[#0E1426] shadow-md rounded-lg overflow-hidden mb-2 sm:mb-0 flex items-center justify-center">
-          <div className="text-center m-4">
-            <Card>
-            <CardBody>
-            <p className='text-white'>{yearContent[selectedYear].categories[selectedCat].description}</p>
-            </CardBody>
-            </Card>
+      {/* Image Overlay */}
+      {overlayImage && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50" onClick={() => setOverlayImage(null)}>
+          <div className="relative">
+            <button
+              className="absolute top-0 right-0 m-4 text-white"
+              onClick={() => setOverlayImage(null)}
+            >
+              Close
+            </button>
+            <div className="w-full h-full flex items-center justify-center">
+              <Image
+                src={overlayImage}
+                alt="Overlay"
+                width={800}
+                height={800}
+                objectFit="contain"
+              />
+            </div>
           </div>
         </div>
+      )}
     </main>
   );
-}  
+}
