@@ -172,10 +172,18 @@ export default function Home() {
     },
   };
 
+  const capitalizeWords = (str) => {
+    return str.replace(/\b\w/g, (char) => char.toUpperCase());
+  };
   
 
   return (
     <main className="bg-[#01081B] flex min-h-screen flex-col items-center relative">
+      
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <img src="/blue-purple-1.svg" alt="Gradient" className="w-full h-full object-cover" />
+      </div>
+
       {/* Header Card */}
       <div className="max-w-8xl w-full bg-white shadow-md overflow-hidden z-10 mb-8">
         {/* Image */}
@@ -207,7 +215,7 @@ export default function Home() {
   
       {/* Year Tabs */}
       <div className="w-full flex justify-center mb-8">
-        <div className="flex space-x-4 p-3 bg-gray-800 rounded-lg shadow-lg">
+        <div className="flex space-x-4 p-3 bg-gray-800 rounded-3xl shadow-lg">
           {Object.keys(yearContent)
             .sort((a, b) => b - a)
             .map((year) => (
@@ -217,7 +225,7 @@ export default function Home() {
                   setSelectedYear(year);
                   setSelectedCat(Object.keys(yearContent[year].categories)[0]);
                 }}
-                className={`px-4 py-2 rounded-2xl ${
+                className={`px-4 py-2 rounded-3xl ${
                   selectedYear === year ? 'bg-[#01081B] text-white' : 'bg-[#525b70] text-black'
                 }`}
               >
@@ -231,7 +239,7 @@ export default function Home() {
       <div className="w-full flex flex-col items-center sm:flex-row sm:justify-center sm:space-x-4 pr-5 pl-5 pb-5">
         <div className="flex flex-col space-y-4 sm:space-y-0 sm:space-x-4 sm:flex-row w-full justify-center">
           {/* Logo Card */}
-          <div className="relative w-full sm:w-1/3 bg-[#0E1426] shadow-md rounded-lg overflow-hidden sm:mb-0 flex items-center justify-center neon-border">
+          <div className="relative w-full sm:w-1/3 bg-[#ffffff14] shadow-md rounded-lg overflow-hidden sm:mb-0 flex items-center justify-center neon-border">
             <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
               Logo
             </div>
@@ -246,9 +254,9 @@ export default function Home() {
           </div>
   
           {/* Description Card */}
-          <div className="relative w-full sm:w-1/3 bg-[#0E1426] shadow-md rounded-lg overflow-hidden mb-4 sm:mb-0 flex items-center justify-center">
+          <div className="relative w-full sm:w-1/3 bg-[#ffffff14] shadow-md rounded-lg overflow-hidden mb-4 sm:mb-0 flex items-center justify-center">
             <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
-              Description
+              About
             </div>
             <div className="text-center m-4">
               <Card>
@@ -261,7 +269,7 @@ export default function Home() {
           </div>
   
           {/* Typography Card */}
-          <div className="relative w-full sm:w-1/3 bg-[#0E1426] shadow-md rounded-lg overflow-hidden mb-4 sm:mb-0 flex items-center justify-center">
+          <div className="relative w-full sm:w-1/3 bg-[#ffffff14] shadow-md rounded-lg overflow-hidden mb-4 sm:mb-0 flex items-center justify-center">
             <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
               Typography
             </div>
@@ -281,7 +289,7 @@ export default function Home() {
       <div className="w-full flex flex-col items-center sm:flex-row sm:justify-center sm:space-x-4 pr-5 pl-5 pb-5">
         <div className="flex flex-col space-y-4 sm:space-y-0 sm:space-x-4 sm:flex-row w-full justify-center">
           {/* Trailer Card */}
-          <div className="relative w-full sm:w-1/2 bg-[#0E1426] shadow-md rounded-lg overflow-hidden sm:mb-0 flex items-center justify-center">
+          <div className="relative w-full sm:w-1/2 bg-[#ffffff14] shadow-md rounded-lg overflow-hidden sm:mb-0 flex items-center justify-center">
             <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
               Trailer
             </div>
@@ -298,7 +306,7 @@ export default function Home() {
           </div>
   
           {/* AfterMovie Card */}
-          <div className="relative w-full sm:w-1/2 bg-[#0E1426] shadow-md rounded-lg overflow-hidden sm:mb-0 flex items-center justify-center">
+          <div className="relative w-full sm:w-1/2 bg-[#ffffff14] shadow-md rounded-lg overflow-hidden sm:mb-0 flex items-center justify-center">
             <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
               AfterMovie
             </div>
@@ -316,22 +324,23 @@ export default function Home() {
         </div>
       </div>
   
-      {/* Category Tabs */}
-      <div className="pl-5 pr-5 w-full overflow-x-auto flex md:justify-center">
-        <div className="flex space-x-4 mb-5 w-max p-3 bg-gray-800 rounded-lg shadow-lg">
-          {Object.keys(yearContent[selectedYear].categories).map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCat(category)}
-              className={`px-4 py-2 rounded-2xl whitespace-nowrap ${
-                selectedCat === category ? 'bg-[#01081B] text-white' : 'bg-[#525b70] text-black'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-      </div>
+
+
+<div className="pl-5 pr-5 w-full overflow-x-auto flex md:justify-center">
+  <div className="flex space-x-4 mb-5 w-max p-3 bg-gray-800 rounded-3xl shadow-lg">
+    {Object.keys(yearContent[selectedYear].categories).map((category) => (
+      <button
+        key={category}
+        onClick={() => setSelectedCat(category)}
+        className={`px-4 py-2 rounded-3xl whitespace-nowrap ${
+          selectedCat === category ? 'bg-[#01081B] text-white' : 'bg-[#525b70] text-black'
+        }`}
+      >
+        {capitalizeWords(category)}
+      </button>
+    ))}
+  </div>
+</div>
   
       {/* Category Content */}
       <div className="bg-[#0E1426] shadow-md rounded-lg overflow-hidden ml-5 mr-5 mb-2 sm:mb-0 flex items-center justify-center">
@@ -385,6 +394,7 @@ export default function Home() {
           </div>
         </div>
       )}
+
     </main>
   );
 }

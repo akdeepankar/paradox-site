@@ -31,3 +31,11 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Custom class for gradient background */
+.bg-gradient-custom {
+  background-image: url('/blue-purple-1.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
