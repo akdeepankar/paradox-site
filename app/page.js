@@ -180,9 +180,9 @@ export default function Home() {
   return (
     <main className="bg-[#01081B] flex min-h-screen flex-col items-center relative">
       
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <img src="/blue-purple-1.svg" alt="Gradient" className="w-full h-full object-cover" />
-      </div>
+      <div className="absolute inset-0 z-0 pointer-events-none hidden md:block">
+  <img src="/blue-purple-1.svg" alt="Gradient" className="w-full h-full object-cover" />
+</div>
 
       {/* Header Card */}
       <div className="max-w-8xl w-full bg-white shadow-md overflow-hidden z-10 mb-8">
