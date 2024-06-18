@@ -22,27 +22,27 @@ export default function Home() {
       categories: { // New object for category content
         technical: {
           image: '/header.JPG', // Image for technical category
-          description: 'Description for Technical Events in 2022'
+          description: 'Description for Technical Events in 2024'
         },
         sports: {
           image: '/sports2022.jpg', // Image for sports category
-          description: 'Description for Sports Events in 2022'
+          description: 'Description for Sports Events in 2024'
         },
         culturals: {
           image: '/cultural2022.jpg', // Image for cultural category
-          description: 'Description for Cultural Events in 2022'
+          description: 'Description for Cultural Events in 2024'
         },
         industry: {
           image: '/cultural2022.jpg', // Image for cultural category
-          description: 'Description for Cultural Events in 2022'
+          description: 'Description for Cultural Events in 2024'
         },
         interactive: {
           image: '/cultural2022.jpg', // Image for cultural category
-          description: 'Description for Cultural Events in 2022'
+          description: 'Description for Cultural Events in 2024'
         },
         Certificate: {
           image: '/cultural2022.jpg', // Image for cultural category
-          description: 'Description for Cultural Events in 2022'
+          description: 'Description for Cultural Events in 2024'
         },
 
       }
