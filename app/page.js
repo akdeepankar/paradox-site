@@ -9,7 +9,6 @@ export default function Home() {
   const [selectedCat, setSelectedCat] = useState('technical');
   const [overlayImage, setOverlayImage] = useState(null);
 
-
   const yearContent = {
     '2024': {
       description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularized in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
@@ -220,34 +219,36 @@ export default function Home() {
         </div>
 
         {/* Header Card */}
-        <div className="max-w-8xl w-full bg-white shadow-md overflow-hidden z-10 mb-8">
-          {/* Image */}
-          <div className="relative h-60">
-            <Image
-              src="/header.png"
-              alt="Header Image"
-              layout="fill"
-              objectFit="cover"
-              className="dark:invert"
-              priority
-            />
-            <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
-            <div className="absolute top-4 left-4 z-30">
-              <Image
-                src="/iitmlogo.png"
-                alt="Logo"
-                width={50}
-                height={50}
-                className="rounded-full"
-              />
-            </div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-20">
-              <h1 className="md:text-7xl text-4xl font-bold mb-2 text-white text-glow">PARADOX</h1>
-              <p className="md:text-xl text-md text-white">Curated and organized by the IIT Madras BS Degree Programme Students</p>
-            </div>
-          </div>
-        </div>
-  
+        <div className="relative w-full h-screen bg-white shadow-md overflow-hidden z-10 mb-8">
+  {/* Image */}
+  <div className="relative w-full h-full">
+    <Image
+      src="/header.png"
+      alt="Header Image"
+      layout="fill"
+      objectFit="cover"
+      className="dark:invert"
+      priority
+    />
+    <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
+    <div className="absolute top-4 left-4 z-30">
+      <Image
+        src="/iitmlogo.png"
+        alt="Logo"
+        width={50}
+        height={50}
+        className="rounded-full"
+      />
+    </div>
+    <div className="absolute inset-0 flex items-center justify-center text-center z-20">
+      <div>
+        <h1 className="md:text-7xl text-4xl font-bold mb-2 text-white text-glow">PARADOX</h1>
+        <p className="md:text-xl text-md text-white">Curated and organized by the IIT Madras BS Degree Programme Students</p>
+      </div>
+    </div>
+  </div>
+</div>
+
         {/* Year Tabs */}
         <div className="w-full flex justify-center mb-8">
           <div className="flex space-x-4 p-3 bg-gray-800 rounded-3xl shadow-lg">
