@@ -2,224 +2,115 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Image from "next/image";
-import {Card, CardBody} from "@nextui-org/card";
+import { Card, CardBody } from "@nextui-org/card";
+import Spline from '@splinetool/react-spline/next';
+
+const yearContent = {
+  '2024': {
+    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s...',
+    image: '/typo.png',
+    logo: '/24logo.png',
+    typography: '/pt.png',
+    tagline: 'PARADOX’24 - Aagaram, Algorhythm and Adrenaline',
+    trailer: 'https://www.youtube.com/embed/upwoG1u_FrY',
+    aftermovie: 'https://www.youtube.com/embed/upwoG1u_FrY',
+    categories: {
+      technical: {
+        description: 'Description for Technical Events in 2024',
+        events: [
+          {
+            name: 'Coding Challenge',
+            images: ['https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'],
+            videos: ['https://firebasestorage.googleapis.com/v0/b/paradox-page.appspot.com/o/WhatsApp%20Video%202024-07-25%20at%2018.07.51.mp4?alt=media'],
+            description: 'Join the ultimate coding challenge...'
+          },
+          {
+            name: 'AI Workshop',
+            images: ['/event3.jpg', '/event4.jpg'],
+            videos: ['https://example.com/video2.mp4'],
+            description: 'Learn about AI in this workshop...'
+          }
+        ]
+      },
+      sports: {
+        description: 'Description for Sports Events in 2024',
+        events: [
+          {
+            name: 'Football Match',
+            images: ['/event5.jpg', '/event6.jpg'],
+            videos: ['https://example.com/video3.mp4'],
+            description: 'Enjoy the football match...'
+          },
+          {
+            name: 'Basketball Tournament',
+            images: ['/event7.jpg', '/event8.jpg'],
+            videos: ['https://example.com/video4.mp4'],
+            description: 'Compete in the basketball tournament...'
+          }
+        ]
+      },
+      culturals: {
+        description: 'Description for Cultural Events in 2024',
+        events: [
+          {
+            name: 'Dance Competition',
+            images: ['/event9.jpg', '/event10.jpg'],
+            videos: ['https://example.com/video5.mp4'],
+            description: 'Show your moves in the dance competition...'
+          },
+          {
+            name: 'Music Fest',
+            images: ['/event11.jpg', '/event12.jpg'],
+            videos: [],
+            description: 'Enjoy the music fest...'
+          }
+        ]
+      }
+      // Add more categories as needed
+    }
+  },
+};
 
 export default function Home() {
   const [selectedYear, setSelectedYear] = useState('2024');
   const [selectedCat, setSelectedCat] = useState('technical');
+  const [selectedEvent, setSelectedEvent] = useState(yearContent['2024'].categories['technical'].events[0].name);
+  const [tab, setTab] = useState('images'); // State for tabs (images/videos)
   const [overlayImage, setOverlayImage] = useState(null);
 
-  const yearContent = {
-    '2024': {
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularized in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-      image: '/typo.png',
-      logo: '/24logo.png',
-      typography: '/pt.png',
-      tagline: 'PARADOX’24 - Aagaram, Algorhythm and Adrenaline',
-      trailer: 'https://www.youtube.com/embed/upwoG1u_FrY',
-      aftermovie: 'https://www.youtube.com/embed/upwoG1u_FrY',
-      categories: { // New object for category content
-        technical: {
-          image: '/header.JPG', // Image for technical category
-          description: 'Description for Technical Events in 2024'
-        },
-        sports: {
-          image: '/sports2022.jpg', // Image for sports category
-          description: 'Description for Sports Events in 2024'
-        },
-        culturals: {
-          image: '/cultural2022.jpg', // Image for cultural category
-          description: 'Description for Cultural Events in 2024'
-        },
-        industry: {
-          image: '/cultural2022.jpg', // Image for cultural category
-          description: 'Description for Cultural Events in 2024'
-        },
-        interactive: {
-          image: '/cultural2022.jpg', // Image for cultural category
-          description: 'Description for Cultural Events in 2024'
-        },
-        Certificate: {
-          image: '/cultural2022.jpg', // Image for cultural category
-          description: 'Description for Cultural Events in 2024'
-        },
-
-      }
-    },
-    '2023': {
-      description: "Paradox’23 was a four-day event held from the 25th of May to the 28th of May 2023. More than 2800 students from different parts of India visited the IIT Madras campus and participated in various interactive, technical, professional, cultural and sports activities curated for them. Paradox23 marked the formal distribution of BSc degree certificates to 9 students and diploma certificates to 258 students. The event also marked the distribution of awards to students with exemplary academic performance in the program for the first time. 23 students received this award at the event. ",
-      image: '/23typo.png',
-      logo: '/23logo.png',
-      typography: '/23typo.png',
-      tagline: 'PARADOX’23 - Mysteries & Beyond',
-      trailer: 'https://www.youtube.com/embed/VEJn0QgZjEY', 
-      aftermovie: 'https://www.youtube.com/embed/P7lLyTUTsHQ',
-      categories: { // New object for category content
-        technical: {
-          image: '/technical2022.jpg', // Image for technical category
-          description: 'Paradox’23 brought a plethora of technical events aimed at tickling the curious minds of the students. With events related to but not limited to coding challenges, game development, machine learning and data analysis and visualization, the students were in for a feast for curious minds. '
-        },
-        sports: {
-          image: '/sports2022.jpg', // Image for sports category
-          description: 'At Paradox’23, we put the physical abilities of our students with a variety of competitive and recreational sports events. From events like Zumba, IPL Auction, chess competitions and e-sporting events to football, volleyball, roller skating and running races, both physical and strategic abilities were tested.The morning of day three witnessed the Instructors versus Organizers Cricket match, in which the organizers came out on top.'
-        },
-        culturals: {
-          image: '/cultural2022.jpg', // Image for cultural category
-          description: 'Paradox’23 hosted a variety of cultural events where students could show off and exhibit their talents. With the classic Paradox events including but limited to Attire Spectra, Dream2Dance and Paradox Unwind, students were treated to nights of fashion, dance and music.'
-        },
-        'industry interaction': {
-          description: 'In an engaging event titled "E-Conclave - Unveiling the Secrets of Startup Success," a panel of renowned experts gathered to share their insights on the factors that contribute to the triumph of startups. The event got kicked off with a keynote speech by Dr. Ashok Jhunjhunwala and the panelists included Prof. Jayraj Joseph, Dr. Shankar Raman, Moinak Banerjee, and Anant Mani, each bringing their unique perspectives from the realms of medtech innovations, incubator support, social entrepreneurship, and scaling challenges. Paradox 2023 also hosted an insightful panel discussion, moderated by Prof. Balaji Srinivasan and Mr. Jaidev Deshpande where industry experts and companies came together to explore the future of skills and cybersecurity. Representatives from renowned organizations such as Wipro, GAVS Technologies, LatentView Analytics, Cargill, Citi, Amadeus, Google, foundit, Microsoft, Encora Inc., and JPMorgan Chase & Co. shared their expertise. Students also had the opportunity to engage with the panelists, posing insightful questions on topics such as preparing students for the tech industry, relevant cybersecurity skills, the applicability of different ML models, and mitigating fraudulent practices associated with AI usage.'
-        },
-        'interactive session': {
-          description: 'Students, at Paradox’23, had the opportunity to interact with their favorite faculty members and legends of education. Fun interactive sessions with Prof. Andrew Thangaraj, Prof. Madhavan Mukund, Prof. G Venkatesh and other favorites brought the students closer to the program. It also gave the professors the opportunity to pass on their wisdom to the students. '
-        },
-        'certificate distribution':{
-          description: ' At Paradox’23, 23 students received awards for their exemplary academic performance in the program. The awards were categorized into three: Certificate of Merit, Certificate of Academic Distinction and Certificate of Academic Excellence. The event also marked the formal distribution of BSc degree certificates to 9 students and diploma certificates to 258 students. The students received their awards and certificates from Chief Guest, Mr. Venkat Viswanathan, Founder and Chairperson at LatentView Analytics and Prof. V Kamakoti, Director of IIT Madras.'
-        }
-      }
-    },
-    '2022': {
-      description: "Organised by the students of IITM BS Degree Program at the IIT Madras Campus 20th, 21st & 22nd May 2022, 1500+ Programming & Data Science students of IIT Madras attended the first on-campus three day festival, which was fully curated and organised by the students. This was a huge platform for interaction between fellow students, faculty, industry experts, and companies. Paradox 22 also marked the formal distribution of provisional diploma certificates to 101 students, including 17 students from families of income less than ₹1 lakh per annum.",
-      image: '/image2024.jpg',
-      logo: '/22logo.png',
-      typography: '/22typo.png',
-      tagline: "PARADOX'22",
-      trailer: 'https://www.youtube.com/embed/VEJn0QgZjEY',
-      aftermovie: 'https://www.youtube.com/embed/-LBqP70pRwk',
-      categories: { // New object for category content
-        technical: {
-          image: '/technical2022.jpg', // Image for technical category
-          description: 'Description for Technical Events in 2022'
-        },
-        sports: {
-          image: '/sports2022.jpg', // Image for sports category
-          description: 'Description for Sports Events in 2022'
-        },
-        culturals: {
-          image: '/cultural2022.jpg', // Image for cultural category
-          description: 'Description for Cultural Events in 2022'
-        }
-      }
-    },
-  };
-
-  //2024 - technical / sports /
-
-  const images = {
-    '2024': {
-      technical: [
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      ],
-      sports: [
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      ],
-      culturals: [
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      ],
-      'industry interaction': [
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      ],
-      'interactive session': [
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      ],
-      'certificate distribution':[
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      ]
-    },
-    '2023': {
-      technical: [
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      ],
-      sports: [
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      ],
-      culturals: [
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      ],
-      'industry interaction': [
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      ],
-      'interactive session': [
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      ],
-      'certificate distribution':[
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      ]
-    },
-    '2022': {
-      technical: [
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      ],
-      sports: [
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      ],
-      culturals: [
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        'https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      ],
-    },
-  };
-  
-  //Capitalize the Words
-  const capitalizeWords = (str) => {
-    return str.replace(/\b\w/g, (char) => char.toUpperCase());
-  };
 
   const imageGalleryRef = useRef(null);
+  const videoGalleryRef = useRef();
 
-  // Scroll to the beginning of the image gallery when the Category changes
+  // Reset tab to 'images' when the category changes
   useEffect(() => {
     if (imageGalleryRef.current) {
       imageGalleryRef.current.scrollLeft = 0;
     }
+    setTab('images');
   }, [selectedCat]);
-  
+
+  // Update selectedEvent when selectedCat changes
+  useEffect(() => {
+    setSelectedEvent(yearContent[selectedYear].categories[selectedCat].events[0].name);
+  }, [selectedCat, selectedYear]);
+
+  // Reset tab to 'images' when the selectedEvent changes
+  useEffect(() => {
+    setTab('images');
+  }, [selectedEvent]);
+
+  // Get the current event details
+  const currentEvent = yearContent[selectedYear].categories[selectedCat].events.find((event) => event.name === selectedEvent);
 
   return (
-    <main className="bg-[#01081B] flex min-h-screen flex-col items-center relative">
-      
-        <div className="absolute inset-0 z-0 pointer-events-none hidden md:block">
+    <main className="bg-[#08011B] flex min-h-screen flex-col items-center relative">
+      <div className="absolute inset-0 z-0 pointer-events-none hidden md:block">
         <img src="/blue-purple-1.svg" alt="Gradient" className="w-full h-full object-cover" />
-        </div>
+      </div>
 
-        {/* Header Card */}
-        <div className="relative w-full h-screen bg-white shadow-md overflow-hidden z-10 mb-8">
+         {/* Header Card */}
+         <div className="relative w-full h-screen bg-white shadow-md overflow-hidden z-10 mb-8">
   {/* Image */}
   <div className="relative w-full h-full">
     <Image
@@ -249,78 +140,74 @@ export default function Home() {
   </div>
 </div>
 
-        {/* Year Tabs */}
-        <div className="w-full flex justify-center mb-8">
-          <div className="flex space-x-4 p-3 bg-gray-800 rounded-3xl shadow-lg">
-            {Object.keys(yearContent)
-              .sort((a, b) => b - a)
-              .map((year) => (
-                <button
-                  key={year}
-                  onClick={() => {
-                    setSelectedYear(year);
-                    setSelectedCat(Object.keys(yearContent[year].categories)[0]);
-                  }}
-                  className={`px-4 py-2 rounded-3xl ${
-                    selectedYear === year ? 'bg-[#01081B] text-white' : 'bg-[#525b70] text-black'
-                  }`}
-                >
-                  {year}
-                </button>
-              ))}
-          </div>
+
+      {/* Year Tabs */}
+      <div className="w-full flex justify-center mb-8">
+        <div className="flex space-x-4 p-3 bg-gray-800 rounded-3xl shadow-lg">
+          {Object.keys(yearContent)
+            .sort((a, b) => b - a)
+            .map((year) => (
+              <button
+                key={year}
+                onClick={() => {
+                  setSelectedYear(year);
+                  setSelectedCat(Object.keys(yearContent[year].categories)[0]);
+                }}
+                className={`px-4 py-2 rounded-3xl ${
+                  selectedYear === year ? 'bg-[#01081B] text-white' : 'bg-[#525b70] text-black'
+                }`}
+              >
+                {year}
+              </button>
+            ))}
         </div>
-    
-        {/* Description and Content */}
-        <div className="w-full flex flex-col items-center sm:flex-row sm:justify-center sm:space-x-4 pr-5 pl-5 pb-5">
-          <div className="flex flex-col space-y-4 sm:space-y-0 sm:space-x-4 sm:flex-row w-full justify-center">
-            {/* Logo Card */}
-            <div className="relative w-full sm:w-1/3 bg-[#ffffff14] shadow-md rounded-lg overflow-hidden sm:mb-0 flex items-center justify-center neon-border">
-              <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
-                Logo
-              </div>
-              <div className="flex items-center justify-center m-4">
-                <Image
-                  src={yearContent[selectedYear].logo}
-                  alt={`Logo for ${selectedYear}`}
-                  width={250}
-                  height={250}
-                />
-              </div>
+      </div>
+
+      {/* Description and Content */}
+      <div className="w-full flex flex-col items-center sm:flex-row sm:justify-center sm:space-x-4 pr-5 pl-5 pb-5">
+        <div className="flex flex-col space-y-4 sm:space-y-0 sm:space-x-4 sm:flex-row w-full justify-center">
+          {/* Logo Card */}
+          <div className="relative w-full sm:w-1/3 bg-[#ffffff14] shadow-md rounded-lg overflow-hidden sm:mb-0 flex items-center justify-center neon-border">
+            <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
+              Logo
             </div>
-    
-        {/* Description Card */}
-        <div className="relative w-full sm:w-1/3 bg-[#ffffff14] shadow-md rounded-lg overflow-hidden mb-4 sm:mb-0 flex items-center justify-center">
-          <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
-            About
+            <div className="flex items-center justify-center m-4">
+              <Image
+                src={yearContent[selectedYear].logo}
+                alt={`Logo for ${selectedYear}`}
+                width={250}
+                height={250}
+              />
+            </div>
           </div>
-          <div className="text-center m-4">
-            <Card>
-              <CardBody>
-                <p className='text-white font-bold'>{yearContent[selectedYear].tagline}</p>
-              </CardBody>
-            </Card>
-            <p className="mb-4 text-white text-md">{yearContent[selectedYear].description}</p>
+
+          {/* Description Card */}
+          <div className="relative w-full sm:w-1/3 bg-[#ffffff14] shadow-md rounded-lg overflow-hidden mb-4 sm:mb-0 flex items-center justify-center">
+            <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
+              About
+            </div>
+            <div className="text-center m-4">
+              <p className="mb-4 text-white text-md">{yearContent[selectedYear].description}</p>
+            </div>
           </div>
-        </div>
-  
-        {/* Typography Card */}
-        <div className="relative w-full sm:w-1/3 bg-[#ffffff14] shadow-md rounded-lg overflow-hidden mb-4 sm:mb-0 flex items-center justify-center">
-          <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
-            Typography
-          </div>
-          <div className="flex items-center justify-center m-4">
-            <Image
-              src={yearContent[selectedYear].typography}
-              alt={`Typography for ${selectedYear}`}
-              width={525}
-              height={175}
-            />
+
+          {/* Typography Card */}
+          <div className="relative w-full sm:w-1/3 bg-[#ffffff14] shadow-md rounded-lg overflow-hidden mb-4 sm:mb-0 flex items-center justify-center">
+            <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
+              Typography
+            </div>
+            <div className="flex items-center justify-center m-4">
+              <Image
+                src={yearContent[selectedYear].typography}
+                alt={`Typography for ${selectedYear}`}
+                width={525}
+                height={175}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  
+
       {/* Trailer and AfterMovie */}
       <div className="w-full flex flex-col items-center sm:flex-row sm:justify-center sm:space-x-4 pr-5 pl-5 pb-5">
         <div className="flex flex-col space-y-4 sm:space-y-0 sm:space-x-4 sm:flex-row w-full justify-center">
@@ -331,7 +218,7 @@ export default function Home() {
             </div>
             <div className="flex items-center justify-center m-4">
               <iframe
-                className="w-full h-64"
+                className="w-full h-64 rounded-lg shadow-md"
                 src={yearContent[selectedYear].trailer}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -340,7 +227,7 @@ export default function Home() {
               ></iframe>
             </div>
           </div>
-  
+
           {/* AfterMovie Card */}
           <div className="relative w-full sm:w-1/2 bg-[#ffffff14] shadow-md rounded-lg overflow-hidden sm:mb-0 flex items-center justify-center">
             <div className="absolute top-0 left-0 bg-[#293e7d] text-white text-xs font-bold px-2 py-1 rounded-br-lg">
@@ -348,7 +235,7 @@ export default function Home() {
             </div>
             <div className="flex items-center justify-center m-4">
               <iframe
-                className="w-full h-64"
+                className="w-full h-64 rounded-lg shadow-md"
                 src={yearContent[selectedYear].aftermovie}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -359,7 +246,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-  
 
       {/* Category Tab */}
       <div className="pl-5 pr-5 w-full overflow-x-auto flex md:justify-center">
@@ -367,7 +253,11 @@ export default function Home() {
           {Object.keys(yearContent[selectedYear].categories).map((category) => (
             <button
               key={category}
-              onClick={() => setSelectedCat(category)}
+              onClick={() => {
+                setSelectedCat(category);
+                // Reset the tab to 'images' when the category changes
+                setTab('images');
+              }}
               className={`px-4 py-2 rounded-3xl whitespace-nowrap ${
                 selectedCat === category ? 'bg-[#01081B] text-white' : 'bg-[#525b70] text-black'
               }`}
@@ -382,57 +272,122 @@ export default function Home() {
       <div className="bg-[#0E1426] shadow-md rounded-lg overflow-hidden ml-5 mr-5 mb-2 sm:mb-0 flex items-center justify-center">
         <div className="text-center m-4">
           <p className="text-white">
-            {yearContent[selectedYear].categories[selectedCat].description}
+            {yearContent[selectedYear].categories[selectedCat]?.description || 'No description available'}
           </p>
         </div>
       </div>
 
-      {/* Image Gallery */}
-      <div ref={imageGalleryRef} className="w-full flex overflow-x-auto p-5">
-        {(images[selectedYear] && images[selectedYear][selectedCat]) ? (
-          images[selectedYear][selectedCat].map((img, index) => (
-            <div
-              key={index}
-              className="relative w-64 h-64 bg-gray-800 shadow-md rounded-lg overflow-hidden flex-shrink-0 mr-4 cursor-pointer"
-              onClick={() => setOverlayImage(img)}
-            >
-              <Image
-                src={img}
-                alt={`${selectedCat} event ${index + 1}`}
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-          ))
-        ) : (
-          <p className="text-white">No images available for this category.</p>
-        )}
-      </div>
- 
-  
-      {/* Image Overlay */}
-      {overlayImage && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50" onClick={() => setOverlayImage(null)}>
-          <div className="relative">
+      {/* Event Tab */}
+      <div className="pt-5 pl-5 pr-5 w-full overflow-x-auto flex md:justify-center">
+        <div className="flex space-x-4 mb-5 w-max p-3 bg-gray-800 rounded-3xl shadow-lg">
+          {yearContent[selectedYear].categories[selectedCat]?.events.map((event) => (
             <button
-              className="absolute top-0 right-0 m-4 text-white"
-              onClick={() => setOverlayImage(null)}
+              key={event.name}
+              onClick={() => {
+                setSelectedEvent(event.name);
+                // Reset the tab to 'images' when the event changes
+                setTab('images');
+              }}
+              className={`px-4 py-2 rounded-3xl whitespace-nowrap ${
+                selectedEvent === event.name ? 'bg-[#01081B] text-white' : 'bg-[#525b70] text-black'
+              }`}
             >
-              Close
+              {capitalizeWords(event.name)}
             </button>
-            <div className="w-full h-full flex items-center justify-center">
+          ))}
+        </div>
+      </div>
+
+{/* Event Content */}
+<div className="flex flex-col items-center">
+  {/* Tabs for Images and Videos */}
+  <div className="w-full flex justify-center mb-4">
+    <div className="flex space-x-4 p-3 bg-gray-800 rounded-3xl shadow-lg">
+      <button
+        onClick={() => setTab('images')}
+        className={`px-4 py-2 rounded-3xl ${
+          tab === 'images' ? 'bg-[#01081B] text-white' : 'bg-[#525b70] text-black'
+        }`}
+      >
+        Images
+      </button>
+      <button
+        onClick={() => setTab('videos')}
+        className={`px-4 py-2 rounded-3xl ${
+          tab === 'videos' ? 'bg-[#01081B] text-white' : 'bg-[#525b70] text-black'
+        }`}
+      >
+        Videos
+      </button>
+    </div>
+  </div>
+
+  {/* Content based on selected tab */}
+  <div className="w-full flex flex-col items-center">
+    {tab === 'images' ? (
+      <div className="w-full overflow-x-auto px-2">
+        <div className="flex space-x-4">
+          {currentEvent?.images.map((image, index) => (
+            <div key={index} className="flex-shrink-0 pb-5">
               <Image
-                src={overlayImage}
-                alt="Overlay"
-                width={800}
-                height={800}
-                objectFit="contain"
+                src={image}
+                alt={`Event Image ${index}`}
+                layout="intrinsic"
+                width={300} // Adjust width as needed
+                height={400} // Adjust height as needed
+                className="rounded-lg shadow-md cursor-pointer"
+                onClick={() => setOverlayImage(image)}
               />
             </div>
-          </div>
+          ))}
         </div>
-      )}
+      </div>
+    ) : (
+      <div className="flex flex-col items-center space-y-4">
+        {currentEvent?.videos.map((video, index) => (
+          <div key={index} className="w-full sm:w-1/2">
+            <iframe
+              className="w-full h-64 rounded-lg shadow-md"
+              src={video}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              title={`Event Video ${index}`}
+            ></iframe>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
 
+  {/* Image Overlay */}
+  {overlayImage && (
+    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50" onClick={() => setOverlayImage(null)}>
+      <div className="relative">
+        <button
+          className="absolute top-0 right-0 m-4 text-white"
+          onClick={() => setOverlayImage(null)}
+        >
+          Close
+        </button>
+        <div className="w-full h-full flex items-center justify-center">
+          <Image
+            src={overlayImage}
+            alt="Overlay"
+            width={800}
+            height={800}
+            objectFit="contain"
+          />
+        </div>
+      </div>
+    </div>
+  )}
+
+</div>
     </main>
   );
+}
+
+function capitalizeWords(str) {
+  return str.replace(/\b\w/g, char => char.toUpperCase());
 }
