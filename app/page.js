@@ -21,13 +21,13 @@ const yearContent = {
           {
             name: 'Coding Challenge',
             images: ['https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'],
-            videos: ['https://firebasestorage.googleapis.com/v0/b/paradox-page.appspot.com/o/WhatsApp%20Video%202024-07-25%20at%2018.07.51.mp4?alt=media'],
+            videos: [,'https://drive.google.com/file/d/1k5Sh0cxIUwRSkZ-ZiDFsvQQPRCKDXDzV/preview','https://drive.google.com/file/d/1k5Sh0cxIUwRSkZ-ZiDFsvQQPRCKDXDzV/preview','https://drive.google.com/file/d/1k5Sh0cxIUwRSkZ-ZiDFsvQQPRCKDXDzV/preview','https://drive.google.com/file/d/1k5Sh0cxIUwRSkZ-ZiDFsvQQPRCKDXDzV/preview','https://drive.google.com/file/d/1k5Sh0cxIUwRSkZ-ZiDFsvQQPRCKDXDzV/preview','https://drive.google.com/file/d/1k5Sh0cxIUwRSkZ-ZiDFsvQQPRCKDXDzV/preview','https://drive.google.com/file/d/1k5Sh0cxIUwRSkZ-ZiDFsvQQPRCKDXDzV/preview'],
             description: 'Join the ultimate coding challenge...'
           },
           {
             name: 'AI Workshop',
-            images: ['/event3.jpg', '/event4.jpg'],
-            videos: ['https://example.com/video2.mp4'],
+            images: ['https://drive.google.com/uc?export=view&id=1hUdjcDJeMTmfpMyp02Wg9c_ryN48HSzm', ],
+            videos: [''],
             description: 'Learn about AI in this workshop...'
           }
         ]
@@ -37,14 +37,14 @@ const yearContent = {
         events: [
           {
             name: 'Football Match',
-            images: ['/event5.jpg', '/event6.jpg'],
-            videos: ['https://example.com/video3.mp4'],
+            images: [],
+            videos: [''],
             description: 'Enjoy the football match...'
           },
           {
             name: 'Basketball Tournament',
             images: ['/event7.jpg', '/event8.jpg'],
-            videos: ['https://example.com/video4.mp4'],
+            videos: [''],
             description: 'Compete in the basketball tournament...'
           }
         ]
@@ -77,6 +77,16 @@ export default function Home() {
   const [selectedEvent, setSelectedEvent] = useState(yearContent['2024'].categories['technical'].events[0].name);
   const [tab, setTab] = useState('images'); // State for tabs (images/videos)
   const [overlayImage, setOverlayImage] = useState(null);
+  const [invalidImages, setInvalidImages] = useState({});
+  const [invalidVideos, setInvalidVideos] = useState({});
+
+  const handleImageError = (index) => {
+    setInvalidImages((prev) => ({ ...prev, [index]: true }));
+  };
+
+  const handleVideoError = (index) => {
+    setInvalidVideos((prev) => ({ ...prev, [index]: true }));
+  };
 
 
   const imageGalleryRef = useRef(null);
@@ -322,41 +332,61 @@ export default function Home() {
     </div>
   </div>
 
-  {/* Content based on selected tab */}
-  <div className="w-full flex flex-col items-center">
-    {tab === 'images' ? (
-      <div className="w-full overflow-x-auto px-2">
-        <div className="flex space-x-4">
-          {currentEvent?.images.map((image, index) => (
-            <div key={index} className="flex-shrink-0 pb-5">
-              <Image
-                src={image}
-                alt={`Event Image ${index}`}
-                layout="intrinsic"
-                width={300} // Adjust width as needed
-                height={400} // Adjust height as needed
-                className="rounded-lg shadow-md cursor-pointer"
-                onClick={() => setOverlayImage(image)}
-              />
+    {/* Content based on selected tab */}
+    <div className="w-full flex flex-col items-center">
+        {tab === 'images' ? (
+          currentEvent?.images?.length > 0 ? (
+            <div className="w-full overflow-x-auto px-2">
+              <div className="flex space-x-4">
+                {currentEvent.images.map((image, index) => (
+                  <div key={index} className="flex-shrink-0 pb-5">
+                    {!invalidImages[index] ? (
+                      <Image
+                        className="rounded-lg shadow-md"
+                        src={image}
+                        alt={`Event Image ${index}`}
+                        layout="intrinsic"
+                        width={300} // Adjust width as needed
+                        height={400} // Adjust height as needed
+                        onClick={() => setOverlayImage(image)}
+                        onError={() => handleImageError(index)}
+                      />
+                    ) : (
+                      <p className="text-gray-500"></p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <p className="text-gray-500">No images available</p>
+          )
+        ): (
+      currentEvent?.videos?.length > 0 ? (
+        <div className="flex overflow-x-scroll space-x-4 pr-2 pl-2 pb-4">
+          {currentEvent.videos.map((video, index) => (
+            <div key={index} className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-2">
+              {!invalidVideos[index] ? (
+                <iframe
+                  className="w-full h-48 sm:h-56 md:h-45 lg:h-45 rounded-lg shadow-md"
+                  width="560"
+                  height="315"
+                  src={video}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title={`Event Video ${index}`}
+                  onError={() => handleVideoError(index)}
+                ></iframe>
+              ) : (
+                <p className="text-gray-500">Video not available</p>
+              )}
             </div>
           ))}
         </div>
-      </div>
-    ) : (
-      <div className="flex flex-col items-center space-y-4">
-        {currentEvent?.videos.map((video, index) => (
-          <div key={index} className="w-full sm:w-1/2">
-            <iframe
-              className="w-full h-64 rounded-lg shadow-md"
-              src={video}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              title={`Event Video ${index}`}
-            ></iframe>
-          </div>
-        ))}
-      </div>
+      ) : (
+        <p className="text-gray-500">No videos available</p>
+      )
     )}
   </div>
 
