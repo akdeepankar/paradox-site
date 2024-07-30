@@ -26,7 +26,7 @@ const yearContent = {
           },
           {
             name: 'AI Workshop',
-            images: ['https://drive.google.com/uc?export=view&id=1hUdjcDJeMTmfpMyp02Wg9c_ryN48HSzm', ],
+            images: ['https://drive.google.com/uc?export=view&id=1hUdjcDJeMTmfpMyp02Wg9c_ryN48HSzm','https://drive.google.com/uc?export=view&id=1hUdjcDJeMTmfpMyp02Wg9c_ryN48HSzm','https://drive.google.com/uc?export=view&id=1hUdjcDJeMTmfpMyp02Wg9c_ryN48HSzm','https://drive.google.com/uc?export=view&id=1hUdjcDJeMTmfpMyp02Wg9c_ryN48HSzm','https://drive.google.com/uc?export=view&id=1hUdjcDJeMTmfpMyp02Wg9c_ryN48HSzm','https://drive.google.com/uc?export=view&id=1hUdjcDJeMTmfpMyp02Wg9c_ryN48HSzm','https://drive.google.com/uc?export=view&id=1hUdjcDJeMTmfpMyp02Wg9c_ryN48HSzm', ],
             videos: [''],
             description: 'Learn about AI in this workshop...'
           }
@@ -69,6 +69,8 @@ const yearContent = {
       // Add more categories as needed
     }
   },
+'2023': {
+}
 };
 
 export default function Home() {
@@ -90,7 +92,6 @@ export default function Home() {
 
 
   const imageGalleryRef = useRef(null);
-  const videoGalleryRef = useRef();
 
   // Reset tab to 'images' when the category changes
   useEffect(() => {
